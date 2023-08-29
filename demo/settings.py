@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'demo.wsgi.application'
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "python-learn",
+        "NAME": "django-demo",
         "USER": "root",
         "PASSWORD": "root",
         "HOST": "127.0.0.1",

@@ -7,13 +7,20 @@
         <tr>
             <td>ID</td>
             <td>部门名称</td>
+            <td>操作</td>
         </tr>
         </thead>
         <tbody>
+        {% for department in  departments %}
             <tr>
-                <th>x</th>
-                <td>x</td>
+                <th>{{ department.id }}</th>
+                <td>{{ department.name }}</td>
+                <td>
+                    <a href="{% url 'department-add' %}" class="btn btn-primary">编辑</a>
+                    <a href="{% url 'department-destroy' department.id %}" class="btn btn-danger">删除</a>
+                </td>
             </tr>
+        {% endfor %}
         </tbody>
     </table>
 {% endblock %}
