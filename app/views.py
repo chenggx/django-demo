@@ -23,6 +23,16 @@ def add(request):
     return redirect('department-index')
 
 
+def update(request, id):
+    department = Department.objects.filter(id=id)
+    if request.method != 'POST':
+        return render(request, 'department/update.html', {'department': department.first()})
+
+    department.update(name=request.POST.get('name'))
+
+    return redirect('department-index')
+
+
 def destroy(request, id):
     deleted, _ = Department.objects.filter(id=id).delete()
 
@@ -54,3 +64,17 @@ def userinfo_destroy(request, id):
 
     if deleted:
         return redirect('userinfo-index')
+
+
+def userinfo_update(request, id):
+    userinfo = Userinfo.objects.filter(id=id).first()
+    if request.method == 'GET':
+        form = UserinfoForm(instance=userinfo)
+
+        return render(request, 'userinfo/update.html', {'form': form})
+
+    form = UserinfoForm(data=request.POST, instance=userinfo)
+    if form.is_valid():
+        form.save()
+        return redirect('userinfo-index')
+    return render(request, 'userinfo/update.html', {"form": form})

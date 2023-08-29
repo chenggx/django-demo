@@ -16,7 +16,7 @@
                 <th>{{ department.id }}</th>
                 <td>{{ department.name }}</td>
                 <td>
-                    <a href="{% url 'department-add' %}" class="btn btn-primary">编辑</a>
+                    <a href="{% url 'department-update' department.id %}" class="btn btn-primary">编辑</a>
                     <a href="{% url 'department-destroy' department.id %}" class="btn btn-danger">删除</a>
                 </td>
             </tr>

@@ -40,7 +40,27 @@ class UserinfoForm(forms.ModelForm):
         fields = ['username', 'password', 'gender', 'department']
         widgets = {
             'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '输入姓名'}),
-            'password': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': '输入密码'}),
+            'password': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '输入密码'}),
             'gender': forms.Select(attrs={'class': 'form-control'}),
             'department': forms.Select(attrs={'class': 'form-control'})
         }
+
+
+class PrettyNum(models.Model):
+    LEVEL_CHOICES = (
+        (1, '一级'),
+        (2, '二级'),
+        (3, '三级'),
+        (4, '四级'),
+    )
+    STATUS_CHOICES = (
+        (1, '已使用'),
+        (2, '未使用'),
+    )
+
+    mobile = models.CharField(verbose_name='手机号', max_length=11)
+    price = models.IntegerField(verbose_name='价格', default=0)
+    level = models.SmallIntegerField(
+        verbose_name='等级', choices=LEVEL_CHOICES, default=1)
+    status = models.SmallIntegerField(
+        verbose_name='状态', choices=STATUS_CHOICES, default=2)

@@ -24,9 +24,11 @@ urlpatterns = [
     path('department/index', views.index, name='department-index'),
     path('department/add', views.add, name='department-add'),
     path('department/destroy/<int:id>', views.destroy, name='department-destroy'),
+    path('department/update/<int:id>', views.update, name='department-update'),
 
     path('userinfo/index', views.userinfo_index, name='userinfo-index'),
     path('userinfo/add', views.userinfo_add, name='userinfo-add'),
-    path('userinfo/destroy/<int:id>', views.userinfo_destroy, name='userinfo-destroy')
+    path('userinfo/destroy/<int:id>', views.userinfo_destroy, name='userinfo-destroy'),
+    path('userinfo/update/<int:id>', views.userinfo_update, name='userinfo-update')
 
 ]

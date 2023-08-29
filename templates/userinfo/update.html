@@ -1,0 +1,18 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+    <form class="row g-3 needs-validation" novalidate method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        	<div class="col-md-12">
+            <label class="form-label">{{ field.label }}</label>
+                {{ field }}
+                <span style="color: red">{{ field.errors.0 }}</span>
+{#            <input type="text" name="name" class="form-control" placeholder="输入部门名称"/>#}
+        </div>
+        {% endfor %}
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">提交</button>
+        </div>
+    </form>
+{% endblock %}
